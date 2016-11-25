@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Media Project{% endblock %}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('bundles/media/css/style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <main class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+        {% block body %}{% endblock %}
+                </div>
+            </div>
+        </main>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

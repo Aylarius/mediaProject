@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Album</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ album.id }}</td>
+            </tr>
+            <tr>
+                <th>Titrealbum</th>
+                <td>{{ album.titreAlbum }}</td>
+            </tr>
+            <tr>
+                <th>Artiste</th>
+                <td>{{ album.artiste }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ album.genre }}</td>
+            </tr>
+            <tr>
+                <th>Support</th>
+                <td>{{ album.support }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('album_index') }}" class="btn btn-default">Retour à la liste</a>
+    <a href="{{ path('album_edit', { 'id': album.id }) }}" class="btn btn-default">Modifier</a>
+    <br><br>
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Supprimer" class="btn btn-default mybtn">
+    {{ form_end(delete_form) }}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des albums</h1>
+
+{% if albums %}
+
+{% for album in albums %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titrealbum</th>
+                <th>Artiste</th>
+                <th>Genre</th>
+                <th>Support</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td><a href="{{ path('album_show', { 'id': album.id }) }}">{{ album.id }}</a></td>
+                <td>{{ album.titreAlbum }}</td>
+                <td>{{ album.artiste }}</td>
+                <td>{{ album.genre }}</td>
+                <td>{{ album.support }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('album_show', { 'id': album.id }) }}" class="btn btn-default btn-sm">Voir</a>
+                            <a href="{{ path('album_edit', { 'id': album.id }) }}" class="btn btn-default btn-sm">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endfor %}
+
+{% else %}
+    <br>
+    <p>Vous n'avez pas encore d'albums. Cliquez sur "Créer un nouvel album".</p>
+    <br>
+{% endif %}
+
+    <a href="{{ path('album_new') }}" class="btn btn-default">Créer un nouvel album</a>
+{% endblock %}
