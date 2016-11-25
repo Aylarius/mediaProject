@@ -80,32 +80,33 @@ class Commentaire
     {
         return $this->commentaire;
     }
+
     /**
      * @var \MediaBundle\Entity\Album
      */
-    private $album_id;
+    private $albumid;
 
 
     /**
-     * Set album_id
+     * Set albumid
      *
-     * @param \MediaBundle\Entity\Album $albumId
+     * @param \MediaBundle\Entity\Album $albumid
      * @return Commentaire
      */
-    public function setAlbumId(\MediaBundle\Entity\Album $albumId = null)
+    public function setAlbumid(\MediaBundle\Entity\Album $albumid = null)
     {
-        $this->album_id = $albumId;
+        $this->albumid = $albumid;
 
         return $this;
     }
 
     /**
-     * Get album_id
+     * Get albumid
      *
      * @return \MediaBundle\Entity\Album 
      */
-    public function getAlbumId()
+    public function getAlbumid()
     {
-        return $this->album_id;
+        return $this->albumid;
     }
 }

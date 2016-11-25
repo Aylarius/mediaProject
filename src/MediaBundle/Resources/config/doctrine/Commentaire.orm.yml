@@ -14,4 +14,11 @@ MediaBundle\Entity\Commentaire:
             length: 255
         commentaire:
             type: text
+    manyToOne:
+        albumid:
+            targetEntity: MediaBundle\Entity\Album
+            inversedBy: id
+            joinColumn:
+                onDelete: CASCADE
+
     lifecycleCallbacks: {  }

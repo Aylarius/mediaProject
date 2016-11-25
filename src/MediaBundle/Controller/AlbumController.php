@@ -57,12 +57,33 @@ class AlbumController extends Controller
      * Finds and displays a album entity.
      *
      */
-    public function showAction(Album $album)
+    public function showAction(Album $album, Request $request)
     {
+        // Delete Album
         $deleteForm = $this->createDeleteForm($album);
+
+        // Récupérer les commentaires
+        $em = $this->getDoctrine()->getManager();
+        $commentaires = $em->getRepository('MediaBundle:Commentaire')->findAll();
+
+        // Créer un commentaire et le lier à l'album
+        $commentaire = new Commentaire();
+        $commentaire->setAlbumid($album);
+        $newCom = $this->createForm(new CommentaireType(), $commentaire);
+        $newCom->handleRequest($request);
+
+        if ($newCom->isSubmitted() && $newCom->isValid()) {
+            $cEm = $this->getDoctrine()->getManager();
+            $cEm->persist($commentaire);
+            $cEm->flush();
+
+            return $this->redirectToRoute('album_show', array('id' => $album->getId()));
+        }
 
         return $this->render('MediaBundle:Album:show.html.twig', array(
             'album' => $album,
+            'newCom' => $newCom->createView(),
+            'commentaires' => $commentaires,
             'delete_form' => $deleteForm->createView(),
         ));
 

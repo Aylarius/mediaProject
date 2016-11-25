@@ -6,7 +6,7 @@ album_index:
 album_show:
     path:     /{id}/show
     defaults: { _controller: "MediaBundle:Album:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 album_new:
     path:     /new

@@ -136,4 +136,34 @@ class Album
     {
         return $this->support;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->id = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add id
+     *
+     * @param \MediaBundle\Entity\Commentaire $id
+     * @return Album
+     */
+    public function addId(\MediaBundle\Entity\Commentaire $id)
+    {
+        $this->id[] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Remove id
+     *
+     * @param \MediaBundle\Entity\Commentaire $id
+     */
+    public function removeId(\MediaBundle\Entity\Commentaire $id)
+    {
+        $this->id->removeElement($id);
+    }
 }
